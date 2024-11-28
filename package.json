@@ -1,0 +1,21 @@
+{
+  "name": "moots-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "deno -A --watch src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  },
+  "dependencies": {
+    "alasql": "^4.5.2",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.4.5",
+    "tailwindcss-animated": "^1.1.2"
+  }
+}

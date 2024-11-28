@@ -1,0 +1,35 @@
+<div id="loading" class="animate-pulse animate-infinite">
+  <h1 class="text-8xl font-bold">Loading...</h1>
+</div>
+<div id="content" style="display: none;">
+    <!-- This will be populated with data -->
+    <ul id="followers-list"></ul>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", async function () {
+        try {
+            // Fetch the followers data
+            const response = await fetch('/fetchFollower');
+            const result = await response.json();
+
+            if (result.success) {
+                // Populate the data
+                const list = document.getElementById("followers-list");
+                result.data.followers.forEach(follower => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = follower.handle; // Adjust based on your API response structure
+                    list.appendChild(listItem);
+                });
+            } else {
+                console.error("Error:", result.message);
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            // Hide loading and show content
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("content").style.display = "block";
+        }
+    });
+</script>

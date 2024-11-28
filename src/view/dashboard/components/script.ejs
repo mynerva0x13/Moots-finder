@@ -1,0 +1,102 @@
+
+<script>
+	var userMenuDiv = document.getElementById("userMenu");
+	var userMenu = document.getElementById("userButton");
+	
+	var navMenuDiv = document.getElementById("nav-content");
+	var navMenu = document.getElementById("nav-toggle");
+	
+	document.onclick = check;
+
+	function check(e){
+	  var target = (e && e.target) || (event && event.srcElement);
+
+	  //User Menu
+	  if (!checkParent(target, userMenuDiv)) {
+		// click NOT on the menu
+		if (checkParent(target, userMenu)) {
+		  // click on the link
+		  if (userMenuDiv.classList.contains("invisible")) {
+			userMenuDiv.classList.remove("invisible");
+		  } else {userMenuDiv.classList.add("invisible");}
+		} else {
+		  // click both outside link and outside menu, hide menu
+		  userMenuDiv.classList.add("invisible");
+		}
+	  }
+	  
+	  //Nav Menu
+	  if (!checkParent(target, navMenuDiv)) {
+		// click NOT on the menu
+		if (checkParent(target, navMenu)) {
+		  // click on the link
+		  if (navMenuDiv.classList.contains("hidden")) {
+			navMenuDiv.classList.remove("hidden");
+		  } else {navMenuDiv.classList.add("hidden");}
+		} else {
+		  // click both outside link and outside menu, hide menu
+		  navMenuDiv.classList.add("hidden");
+		}
+	  }
+	  
+	}
+
+	function checkParent(t, elm) {
+	  while(t.parentNode) {
+		if( t == elm ) {return true;}
+		t = t.parentNode;
+	  }
+	  return false;
+	}
+</script>
+
+<script>
+    // document.addEventListener("DOMContentLoaded", async function () {
+    //     try {
+    //         // Fetch the followers data
+    //         const response = await fetch('/fetchFollower');
+    //         const result = await response.json();
+
+
+    //         if (result.success) {
+    //             // console.log()
+	// 			userInfo(result.data.subject)
+    //             // Populate the data
+    //             // const list = document.getElementById("followers-list");
+    //             // result.data.followers.forEach(follower => {
+    //             //     const listItem = document.createElement("li");
+    //             //     listItem.textContent = follower.handle; // Adjust based on your API response structure
+    //             //     list.appendChild(listItem);
+    //             // });
+    //         } else {
+    //             console.error("Error:", result.message);
+    //         }
+
+	// 		const getCountofFollower = await fetch("/getTotalFollower")
+    //         const resultCount = await getCountofFollower.json();
+
+	// 		console.log(resultCount)
+    //     } catch (error) {
+    //         console.error("Error fetching data:", error);
+    //     } finally {
+    //         // Hide loading and show content
+    //         // document.getElementById("loading").style.display = "none";
+    //         // document.getElementById("content").style.display = "block";
+    //     }
+    // });
+
+	// function userInfo(info)	 {
+	// 	console.log(info.avatar)
+	// 	document.querySelector("#username").innerHTML = info.displayName
+	// 	document.querySelector("#avatarSrc").src = info.avatar
+	// }
+	
+</script>
+<script src="script/initialization.js"></script>
+<script src="script/newFollower.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Initialize the page by fetching data
+        initializePage();
+    });
+</script>
